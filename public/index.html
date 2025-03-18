@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>saas search</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -8,16 +9,16 @@
   <h1>saas search</h1>
   <div class="search-container">
     <input type="text" id="searchBox" placeholder="enter your search query" maxlength="380">
-    <button onclick="search()">search</button>
+    <button>search</button>
   </div>
   <div id="loading" style="text-align: center; display: none;">searching for relevant saas solutions<span id="loading-dots"></span></div>
-  <div id="model" style="text-align: center;"></div>
-  <div id="time" style="text-align: center;"></div>
-  <div id="results"></div>
+  <div id="model" style="text-align: center; font-size: small; font-style: italic;"></div>
+  <div id="time" style="text-align: center; font-size: small; font-style: italic;"></div>
+  <div id="results" style="text-align: center"></div>
   <script>
-  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
-</script>
-<script defer src="/_vercel/insights/script.js"></script>
+    window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+  </script>
+  <script defer src="/_vercel/insights/script.js"></script>
   <script>
     async function search() {
       const loadingDots = document.getElementById('loading-dots');
@@ -44,9 +45,7 @@
         document.getElementById("time").innerHTML = `time: ${data.generateRecommendationsTime}ms`;
         let resultsHTML = '';
         if (data.results && Array.isArray(data.results)) {
-          data.results.forEach(result => {
-            resultsHTML += `<p>${result}</p>`;
-          });
+          resultsHTML += data.results.map(result => `<p>${result}</p>`).join('');
         } else {
           resultsHTML = `<p>No results found.</p>`;
         }
@@ -60,9 +59,25 @@
       }
     }
 
+    // Debounce function
+    function debounce(func, delay) {
+      let timeout;
+      return function(...args) {
+        const context = this;
+        clearTimeout(timeout);
+        timeout = setTimeout(() => func.apply(context, args), delay);
+      };
+    }
+
+    const searchBox = document.getElementById('searchBox');
+    const debouncedSearch = debounce(search, 800);
+
+    const searchButton = document.querySelector('.search-container button');
+    searchButton.addEventListener('click', debouncedSearch);
+
     document.getElementById('searchBox').addEventListener('keypress', function (e) {
       if (e.key === 'Enter') {
-        search();
+        debouncedSearch();
       }
     });
   </script>
