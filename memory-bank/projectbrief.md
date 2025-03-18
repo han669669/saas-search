@@ -98,6 +98,14 @@ To further clarify the focus, consider the following table comparing traditional
 
 This table, derived from discussions like (Micro SaaS: What It Is and How to Build One | HackerNoon), underscores the product's focus on micro-SaaS, ensuring alignment with user expectations for specialized, high-support solutions.
 
+## Contributing
+
+SaaS providers are encouraged to contribute their solutions to the platform. By submitting a pull request to add their SaaS solution to the `data.js` file, providers can:
+
+*   Increase the visibility of their solution.
+*   Have their solution recommended to relevant users.
+*   Become part of a curated collection of high-quality SaaS tools.
+
 ## Conclusion
 
 This design brief provides a comprehensive roadmap for developing the AI-powered search box MVP, addressing user needs through efficient natural language processing and targeted recommendations. By leveraging pre-trained models and embedding-based search, the product aims to deliver fast, relevant results, enhancing user experience and solving the challenge of finding small SaaS solutions effectively.

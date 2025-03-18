@@ -16,7 +16,7 @@ The SaaS Recommendation Engine is a web application designed to help users find 
 
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/han669669/saas-recommendation-engine.git
+   git clone https://github.com/han669669/saas-search.git
    cd saas-recommendation-engine
    ```
 
@@ -69,6 +69,19 @@ The SaaS Recommendation Engine is a web application designed to help users find 
 - **dotenv**: Environment variable management.
 
 ## Contributing
+
+Want to see your SaaS solution listed and recommended?  Contribute to our `data.js` file by submitting a pull request!
+
+Here's how:
+
+1.  **Fork the repository.**
+2.  **Edit `data.js`:** Add your SaaS solution's information to the file.  Make sure to include the name, a brief description, pricing, and category.
+3.  **Submit a pull request:**  Will review your submission and add it to the list !
+
+or simply dm me on twitter(x) or email me with your SaaS solution's information and I'll add it for you !
+
+4.  **Direct Message (DM) me on Twitter(x):**  [craftedbyhan](https://x.com/intent/follow?screen_name=bbqbbq669)
+5.  **Email me:**  [contact@craftedbyhan.xyz](mailto:contact@craftedbyhan.xyz)
 
 Contributions are welcome! Please open an issue or submit a pull request.
 

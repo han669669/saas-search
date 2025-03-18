@@ -16,12 +16,16 @@
 *   Added a category field to each SaaS solution in `data.js`.
 *   Implemented a table to display all SaaS solutions, categorized by their category, with their name and pricing.
 *   Improved the UI of the table with consistent styling and responsiveness.
+*   Added a tagline to encourage SaaS providers to contribute their solutions.
+*   Improved the styling of the tagline in the footer.
+*   Updated the contributing section of the README.
 
 ## What's Left to Build:
 
 *   Explore caching strategies to further improve loading times.
 *   Consider adding a search function to the table.
 *   Consider implementing a database with pre-computed embeddings for improved scalability and performance.
+*   Monitor the number of contributions from SaaS providers.
 
 ## Current Status:
 
