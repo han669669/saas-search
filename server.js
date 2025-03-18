@@ -20,6 +20,11 @@ const model = "liquid/lfm-7b";
 app.use(express.static('public'));
 app.use(express.json());
 
+// API endpoint to serve all SaaS solutions
+app.get('/api/solutions', (req, res) => {
+  res.json(saasSolutions);
+});
+
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
@@ -151,8 +156,8 @@ async function generateRecommendations(query) {
   console.log("Final relevant solutions:", finalRelevantSolutions);
 
   console.timeEnd("generateRecommendations");
-  // Return the names of the relevant solutions
-  return { recommendations: finalRelevantSolutions.map(solution => solution.name), model: model };
+  // Return the names of the relevant solutions, including pricing
+  return { recommendations: finalRelevantSolutions.map(solution => ({ name: solution.name, pricing: solution.pricing })), model: model };
 }
 
 // API endpoint for search

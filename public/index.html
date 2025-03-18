@@ -15,7 +15,10 @@
   <div id="loading" style="text-align: center; display: none;">searching for relevant saas solutions<span id="loading-dots"></span></div>
   <div id="model" style="text-align: center; font-size: small; font-style: italic;"></div>
   <div id="time" style="text-align: center; font-size: small; font-style: italic;"></div>
-  <div id="results" style="text-align: center"></div>
+  <div id="results" class="results-container"></div>
+
+  <div id="all-solutions" class="all-solutions-container"></div>
+
   <script>
     window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
   </script>
@@ -46,7 +49,12 @@
         document.getElementById("time").innerHTML = `time: ${data.generateRecommendationsTime}ms`;
         let resultsHTML = '';
         if (data.results && Array.isArray(data.results)) {
-          resultsHTML += data.results.map(result => `<p>${result}</p>`).join('');
+          resultsHTML += data.results.map(result => `
+            <div class="solution-item">
+              <div class="solution-name">${result.name}</div>
+              <div class="solution-pricing">${result.pricing}</div>
+            </div>
+          `).join('');
         } else {
           resultsHTML = `<p>No results found.</p>`;
         }
@@ -81,6 +89,72 @@
         debouncedSearch();
       }
     });
+
+    // Function to display all SaaS solutions
+    async function displayAllSolutions() {
+      const allSolutionsContainer = document.getElementById('all-solutions');
+      allSolutionsContainer.innerHTML = ''; // Clear existing content
+
+      // Create and append the heading
+      const heading = document.createElement('h2');
+      heading.textContent = 'all vibing saas solutions';
+      allSolutionsContainer.appendChild(heading);
+
+      try {
+        const response = await fetch('/api/solutions'); // Fetch data from the API
+        const saasSolutions = await response.json();
+
+        // Group solutions by category
+        const groupedSolutions = saasSolutions.reduce((acc, solution) => {
+          const category = solution.category;
+          if (!acc[category]) {
+            acc[category] = [];
+          }
+          acc[category].push(solution);
+          return acc;
+        }, {});
+
+        // Create table for each category
+        for (const category in groupedSolutions) {
+          if (groupedSolutions.hasOwnProperty(category)) {
+            const solutions = groupedSolutions[category];
+
+            const categoryHeader = document.createElement('h3');
+            categoryHeader.textContent = category;
+            allSolutionsContainer.appendChild(categoryHeader);
+
+            const table = document.createElement('table');
+            table.className = 'solutions-table';
+
+            const thead = table.createTHead();
+            const headerRow = thead.insertRow();
+            const nameHeader = document.createElement('th');
+            nameHeader.textContent = 'Name';
+            const pricingHeader = document.createElement('th');
+            pricingHeader.textContent = 'Pricing';
+            headerRow.appendChild(nameHeader);
+            headerRow.appendChild(pricingHeader);
+
+            const tbody = table.createTBody();
+            solutions.forEach(solution => {
+              const row = tbody.insertRow();
+              const nameCell = row.insertCell();
+              nameCell.textContent = solution.name;
+              const pricingCell = row.insertCell();
+              pricingCell.textContent = solution.pricing;
+            });
+
+            allSolutionsContainer.appendChild(table);
+          }
+        }
+      } catch (error) {
+        console.error('Error fetching or processing data:', error);
+        allSolutionsContainer.innerHTML = '<p>Error loading solutions.</p>';
+      }
+    }
+
+    // Call displayAllSolutions when the page loads
+    window.onload = displayAllSolutions;
   </script>
 </body>
 </html>
