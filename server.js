@@ -156,7 +156,7 @@ async function generateRecommendations(query) {
 }
 
 // API endpoint for search
-app.post('/search', async (req, res) => {
+app.post('/api/search', async (req, res) => {
   const query = req.body.query;
 
   try {
