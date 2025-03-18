@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>SaaS Search</title>
-  <link rel="stylesheet" href="public/style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h1>SaaS Search</h1>
@@ -20,7 +20,7 @@
       document.getElementById('results').innerHTML = '';
       var query = document.getElementById("searchBox").value;
       try {
-        const response = await fetch(`http://localhost:3000/search?cacheBust=${Date.now()}`, {
+        const response = await fetch(`/search?cacheBust=${Date.now()}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
@@ -29,8 +29,8 @@
         });
 
         const data = await response.json();
-        document.getElementById("model").innerHTML = `Model: ${data.model}`;
-        document.getElementById("time").innerHTML = `Time: ${data.generateRecommendationsTime}ms`;
+        document.getElementById("model").innerHTML = `model: ${data.model}`;
+        document.getElementById("time").innerHTML = `time: ${data.generateRecommendationsTime}ms`;
         let resultsHTML = '';
         if (data.results && Array.isArray(data.results)) {
           data.results.forEach(result => {
