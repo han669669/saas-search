@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>SaaS Search</title>
+  <title>saas search</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>SaaS Search</h1>
+  <h1>saas search</h1>
   <div class="search-container">
-    <input type="text" id="searchBox" placeholder="Enter your search query">
-    <button onclick="search()">Search</button>
+    <input type="text" id="searchBox" placeholder="enter your search query" maxlength="380">
+    <button onclick="search()">search</button>
   </div>
-  <div id="loading" style="text-align: center; display: none;">searching for relevant saas solutions...</div>
+  <div id="loading" style="text-align: center; display: none;">searching for relevant saas solutions<span id="loading-dots"></span></div>
   <div id="model" style="text-align: center;"></div>
   <div id="time" style="text-align: center;"></div>
   <div id="results"></div>
@@ -20,6 +20,13 @@
 <script defer src="/_vercel/insights/script.js"></script>
   <script>
     async function search() {
+      const loadingDots = document.getElementById('loading-dots');
+      let dotCount = 0;
+      const animationInterval = setInterval(() => {
+        dotCount = (dotCount + 1) % 4;
+        loadingDots.textContent = '.'.repeat(dotCount);
+      }, 500);
+
       document.getElementById('loading').style.display = 'block';
       document.getElementById('results').innerHTML = '';
       var query = document.getElementById("searchBox").value;
@@ -49,6 +56,7 @@
         document.getElementById("results").innerHTML = `<p>Error: ${error}</p>`;
       } finally {
         document.getElementById('loading').style.display = 'none';
+        clearInterval(animationInterval);
       }
     }
 
