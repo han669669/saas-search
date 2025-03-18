@@ -132,3 +132,25 @@ button:hover {
     margin-bottom: 20px;
   }
 }
+
+h1.title {
+  margin-bottom: 0px;
+}
+
+p.subtitle {
+  text-align: center;
+  font-size: small;
+  font-style: italic;
+  margin-top: 6px;
+}
+
+.loading {
+  text-align: center;
+  display: none;
+}
+
+.model-time {
+  text-align: center;
+  font-size: small;
+  font-style: italic;
+}
