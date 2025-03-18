@@ -12,10 +12,15 @@
 *   Improved the filtering logic after the AI call to prevent correct solutions from being filtered out.
 *   Added extensive logging for debugging and verification.
 *   Created a `README.md` file to document the project.
+*   Added pricing information to each SaaS solution in `data.js`.
+*   Added a category field to each SaaS solution in `data.js`.
+*   Implemented a table to display all SaaS solutions, categorized by their category, with their name and pricing.
+*   Improved the UI of the table with consistent styling and responsiveness.
 
 ## What's Left to Build:
 
 *   Explore caching strategies to further improve loading times.
+*   Consider adding a search function to the table.
 *   Consider implementing a database with pre-computed embeddings for improved scalability and performance.
 
 ## Current Status:

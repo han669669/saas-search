@@ -12,3 +12,4 @@ This project aims to create a search box that understands natural language queri
 *   Provide quick, relevant recommendations.
 *   Simplify and streamline the search process.
 *   Offer a user-friendly interface accessible to non-technical users.
+*   Display all SaaS solutions in a categorized table with names and pricing.

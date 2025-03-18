@@ -34,3 +34,6 @@ This file captures important patterns, preferences, and project intelligence tha
 *   Integrating external APIs can be challenging due to dependency issues and authentication requirements.
 *   Maintaining consistency between the client and server code requires careful coordination.
 *   Correctly configuring and using local search libraries like `minisearch` can be challenging due to their specific API and configuration options.
+*   The `data.js` file now includes `pricing` and `category` fields for each SaaS solution.
+*   The client-side code fetches data from the `/api/solutions` endpoint instead of directly importing `data.js`.
+*   Implementing a table with dynamic content requires careful coordination between HTML structure, CSS styling, and JavaScript data manipulation.

@@ -23,4 +23,6 @@
 *   express
 *   node-fetch
 *   dotenv
+*   compromise
+*   minisearch
 *   pg (if using PostgreSQL)

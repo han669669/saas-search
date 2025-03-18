@@ -3,6 +3,7 @@
 *   It seems likely that the design brief for an AI-powered search box can effectively recommend small SaaS solutions using natural language processing.
 *   Research suggests that pre-trained models like spaCy and sbert are suitable for efficient, fast, and cost-effective AI processing.
 *   The evidence leans toward embedding-based search for matching user queries to solutions, ensuring quick and relevant recommendations.
+*   A table is implemented to display all SaaS solutions, categorized by their category, with their name and pricing.
 *   An unexpected detail is that small SaaS solutions, often called micro-SaaS, focus on niche markets, enhancing user-specific problem-solving.
 
 ## Introduction
