@@ -10,7 +10,7 @@ This file captures important patterns, preferences, and project intelligence tha
 
 ### Tool Usage Patterns
 
-*   The `replace_in_file` tool has been used extensively to modify the `server.js` and `index.html` files.
+*   The `replace_in_file` tool has been used extensively to modify the `server.js` and `public/index.html` files.
 *   The `write_to_file` tool has been used to create new files such as `data.js` and `.env`.
 *   The `execute_command` tool has been used to run commands such as `npm install` and `node server.js`.
 
