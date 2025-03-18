@@ -2,6 +2,10 @@ import express from 'express';
 import fetch from 'node-fetch';
 import dotenv from 'dotenv';
 dotenv.config();
+import cors from 'cors';
+import rateLimit from "express-rate-limit";
+import helmet from 'helmet';
+import xss from 'xss';
 import * as data from './data.js';
 const saasSolutions = data.default || data;
 
@@ -10,6 +14,44 @@ const solutionNames = new Set(saasSolutions.map(solution => solution.name));
 
 const app = express();
 const port = 3000;
+
+const corsOptions = {
+  origin: process.env.ALLOWED_ORIGINS ? process.env.ALLOWED_ORIGINS.split(',') : '*', // Set allowed origins in .env file, allow all if not set
+  methods: ['GET', 'POST'],
+  allowedHeaders: ['X-Requested-With', 'Content-Type']
+};
+
+app.use(cors(corsOptions));
+
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+  standardHeaders: true, // Return rate limit info in the `RateLimit-*` headers
+  legacyHeaders: false, // Disable the `X-RateLimit-*` headers
+});
+
+app.use(limiter);
+
+app.use(
+  helmet({
+    contentSecurityPolicy: {
+      directives: {
+        defaultSrc: ["'self'"],
+        scriptSrc: ["'self'", "'unsafe-inline'"],
+        styleSrc: ["'self'", "'unsafe-inline'"],
+        imgSrc: ["'self'", "data:", "https:"],
+      },
+    },
+    referrerPolicy: {
+      policy: "strict-origin-when-cross-origin",
+    },
+    hsts: {
+      maxAge: 31536000,
+      includeSubDomains: true,
+      preload: true,
+    },
+  })
+);
 
 // Load environment variables
 const apiKey = process.env.OPENROUTER_API_KEY;
@@ -23,13 +65,6 @@ app.use(express.json());
 // API endpoint to serve all SaaS solutions
 app.get('/api/solutions', (req, res) => {
   res.json(saasSolutions);
-});
-
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With, content-type');
-  next();
 });
 
 // Function to call OpenRouter API and assess semantic relevance
@@ -162,7 +197,13 @@ async function generateRecommendations(query) {
 
 // API endpoint for search
 app.post('/api/search', async (req, res) => {
-  const query = req.body.query;
+  let { query } = req.body;
+  if (typeof query !== 'string' || query.length > 500) {
+    return res.status(400).json({ error: 'Invalid query' });
+  }
+
+  // Sanitize the query using xss
+  query = xss(query);
 
   try {
     const startTime = Date.now();
