@@ -20,7 +20,7 @@
       document.getElementById('results').innerHTML = '';
       var query = document.getElementById("searchBox").value;
       try {
-        const response = await fetch(`/search?cacheBust=${Date.now()}`, {
+        const response = await fetch(`/api/search?cacheBust=${Date.now()}`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json'
