@@ -1,0 +1,36 @@
+## Project Intelligence
+
+This file captures important patterns, preferences, and project intelligence that help me work more effectively with this project.
+
+### Key Insights
+
+*   The project uses the OpenRouter API for natural language processing.
+*   The project uses a manually curated list of SaaS solutions for recommendations.
+*   The project is structured as a client-server application with a Node.js server and a HTML/CSS/JavaScript client.
+
+### Tool Usage Patterns
+
+*   The `replace_in_file` tool has been used extensively to modify the `server.js` and `index.html` files.
+*   The `write_to_file` tool has been used to create new files such as `data.js` and `.env`.
+*   The `execute_command` tool has been used to run commands such as `npm install` and `node server.js`.
+
+### Key Insights
+
+*   The project uses the OpenRouter API for natural language processing.
+*   The project uses a manually curated list of SaaS solutions for recommendations.
+*   The project is structured as a client-server application with a Node.js server and a HTML/CSS/JavaScript client.
+*   The project now uses `minisearch` for local indexing and search, improving scalability and performance.
+*   The `generateRecommendations` function uses a customized scoring function to prioritize different fields in the `minisearch` results.
+
+### Tool Usage Patterns
+
+*   The `replace_in_file` tool has been used extensively to modify the `server.js` and `index.html` files.
+*   The `write_to_file` tool has been used to create new files such as `data.js` and `.env`.
+*   The `execute_command` tool has been used to run commands such as `npm install` and `node server.js`.
+*   The `npm uninstall` tool has been used to remove unused dependencies.
+
+### Challenges
+
+*   Integrating external APIs can be challenging due to dependency issues and authentication requirements.
+*   Maintaining consistency between the client and server code requires careful coordination.
+*   Correctly configuring and using local search libraries like `minisearch` can be challenging due to their specific API and configuration options.
