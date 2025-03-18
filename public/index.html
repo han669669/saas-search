@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>saas vibe search</title>
-  <link rel="stylesheet" href="style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>saas vibe search</title>
+    <link rel="icon" href="saasvibesearch.svg" type="image/svg+xml">
+    <link rel="icon" href="saasvibesearch.png" type="image/png">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1 style="margin-bottom: 0px;">saas vibe search</h1>
-  <p style="text-align: center; font-size: small; font-style: italic; margin-top: 6px;">vibing collection of saas solutions made by vibe coders</p>
+  <h1 class="title">saas vibe search</h1>
+  <p class="subtitle">vibing collection of saas solutions made by vibe coders</p>
   <div class="search-container">
     <input type="text" id="searchBox" placeholder="enter your search query" maxlength="380">
     <button>search</button>
   </div>
-  <div id="loading" style="text-align: center; display: none;">searching for relevant saas solutions<span id="loading-dots"></span></div>
-  <div id="model" style="text-align: center; font-size: small; font-style: italic;"></div>
-  <div id="time" style="text-align: center; font-size: small; font-style: italic;"></div>
+  <div id="loading" class="loading">searching for relevant saas solutions<span id="loading-dots"></span></div>
+  <div id="model" class="model-time"></div>
+  <div id="time" class="model-time"></div>
   <div id="results" class="results-container"></div>
 
   <div id="all-solutions" class="all-solutions-container"></div>
