@@ -25,9 +25,10 @@
 *   Consider adding a search function to the table.
 *   Consider implementing a database with pre-computed embeddings for improved scalability and performance.
 *   Monitor the number of contributions from SaaS providers.
+*   Added meta properties, Open Graph, and Twitter Card tags to `public/index.html` to improve SEO and social media sharing.
 
 **Active Decisions and Considerations:**
-*   Using the OpenRouter API and the `liquid/lfm-7b` model for semantic search.
+*   Using the OpenRouter API and the `google/gemma-2-9b-it:free` model for semantic search.
 *   Maintaining a manually curated list of SaaS solutions in `data.js` for the MVP.
 *   Considered implementing a database with pre-computed embeddings for improved scalability and performance. No decision has been made yet.
 

@@ -19,6 +19,7 @@
 *   Added a tagline to encourage SaaS providers to contribute their solutions.
 *   Improved the styling of the tagline in the footer.
 *   Updated the contributing section of the README.
+*   Added meta properties, Open Graph, and Twitter Card tags to `public/index.html` to improve SEO and social media sharing.
 
 ## What's Left to Build:
 
