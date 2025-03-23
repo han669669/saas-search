@@ -56,6 +56,7 @@ app.use(
 // Load environment variables
 const apiKey = process.env.OPENROUTER_API_KEY;
 const model = "liquid/lfm-7b";
+// const model = "mistralai/mistral-nemo";
 // other free models to use rate limited, google/gemini-2.0-flash-lite-preview-02-05:free, google/gemini-flash-1.5-8b-exp
 
 // Middleware to enable CORS
